@@ -1,8 +1,17 @@
+import java.util.ArrayList;
+
 public class Werkkracht {
     private String naam;
     private int code;
     private int bsn;
+    public static ArrayList<Werkkracht> personen = new ArrayList<>();
 
+    Werkkracht(String naam, Integer bsn, Integer code){
+        this.naam = naam;
+        this.bsn = bsn;
+        this.code = code;
+
+    }
 
 
 
@@ -19,14 +28,29 @@ public class Werkkracht {
 
 
     }
-    public boolean checknaamArray(String naam){
-        return false;
-    }
-    public boolean checkbsn(int bsn){
+    public String checknaamArray(){
+        if(personen.contains(this)) {
+            return "Je staat in ons systeem";
+        }
+        return "Sorry je staat niet in ons systeem";
 
-        return false;
     }
-    public boolean checkCodeRegel(int code){
-        return false;
+    public String checkbsn(){
+        int numDigits = String.valueOf(bsn).length();
+        if(numDigits == 9){
+            return "Je bsn klopt geweldig!";
+        }
+        return "Sorry je bsn nummer klopt niet";
+
+
+
+    }
+    public String checkCodeRegel(){
+        int numDigits = String.valueOf(code).length();
+        if(numDigits == 4){
+            return "Je code klopt";
+        }
+        return "Je code klopt niet";
+
     }
 }
